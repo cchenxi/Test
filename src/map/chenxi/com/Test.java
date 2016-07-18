@@ -11,10 +11,12 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//推荐产品ids
+		int[] ids = { 2, 12, 7, 5, 9, 18, 3, 6, 4 };
 		// 原始产品列表
 		List<Product> productsOriginal = new ArrayList<>();
 		for (int i = 1; i < 11; i++) {
-			Product book = new Product(i, "书" + i, i * 10.0);
+			Product book = new Product(i, "书o" + i, i * 10.0);
 			productsOriginal.add(book);
 		}
 		System.out.println(JSON.toJSONString(productsOriginal));
@@ -24,14 +26,22 @@ public class Test {
 		for (Product product : productsOriginal) {
 			originalProductMap.put(product.getProductId(), product);
 		}
+		
+		//putAll操作会保留后面的数据 舍弃前面的数据
+		//同php array_merge方法
+		for (int id : ids) {
+			if (null != originalProductMap.get(id)) {
+				originalProductMap.remove(id);
+			}
+		}
+		
 		System.out.println(JSON.toJSONString(originalProductMap));
 
-		int[] ids = { 2, 12, 7, 5, 9, 18, 3, 6, 4 };
 		// 推荐产品列表
 		List<Product> productsRecommend = new ArrayList<>();
 		for (int j = 20; j >= 1; j--) {
 			if (j % 3 == 0) {
-				Product book = new Product(j, "书" + j, j * 10.0);
+				Product book = new Product(j, "书r" + j, j * 10.0);
 				productsRecommend.add(book);
 			}
 		}
