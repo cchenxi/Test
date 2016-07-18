@@ -1,4 +1,4 @@
-package map.chenxi.com;
+package com.chenxi.map;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

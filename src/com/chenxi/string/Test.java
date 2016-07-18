@@ -1,4 +1,4 @@
-package string.chenxi.com;
+package com.chenxi.string;
 
 import com.alibaba.fastjson.JSON;
 
