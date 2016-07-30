@@ -11,24 +11,24 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//ÍÆ¼ö²úÆ·ids
+		//æ¨èäº§å“ids
 		int[] ids = { 2, 12, 7, 5, 9, 18, 3, 6, 4 };
-		// Ô­Ê¼²úÆ·ÁĞ±í
+		// åŸå§‹äº§å“åˆ—è¡¨
 		List<Product> productsOriginal = new ArrayList<>();
 		for (int i = 1; i < 11; i++) {
-			Product book = new Product(i, "Êéo" + i, i * 10.0);
+			Product book = new Product(i, "ä¹¦o" + i, i * 10.0);
 			productsOriginal.add(book);
 		}
 		System.out.println(JSON.toJSONString(productsOriginal));
 
-		// ½«Ô­Ê¼²úÆ·ÁĞ±í×ª³Émap
+		// å°†åŸå§‹äº§å“åˆ—è¡¨è½¬æˆmap
 		Map<Integer, Product> originalProductMap = new LinkedHashMap<>();
 		for (Product product : productsOriginal) {
 			originalProductMap.put(product.getProductId(), product);
 		}
 		
-		//putAll²Ù×÷»á±£ÁôºóÃæµÄÊı¾İ ÉáÆúÇ°ÃæµÄÊı¾İ
-		//Í¬php array_merge·½·¨
+		//putAllæ“ä½œä¼šä¿ç•™åé¢çš„æ•°æ® èˆå¼ƒå‰é¢çš„æ•°æ®
+		//åŒphp array_mergeæ–¹æ³•
 		for (int id : ids) {
 			if (null != originalProductMap.get(id)) {
 				originalProductMap.remove(id);
@@ -37,24 +37,24 @@ public class Test {
 		
 		System.out.println(JSON.toJSONString(originalProductMap));
 
-		// ÍÆ¼ö²úÆ·ÁĞ±í
+		// æ¨èäº§å“åˆ—è¡¨
 		List<Product> productsRecommend = new ArrayList<>();
 		for (int j = 20; j >= 1; j--) {
 			if (j % 3 == 0) {
-				Product book = new Product(j, "Êér" + j, j * 10.0);
+				Product book = new Product(j, "ä¹¦r" + j, j * 10.0);
 				productsRecommend.add(book);
 			}
 		}
 		System.out.println(JSON.toJSONString(productsRecommend));
 
-		// ½«ÍÆ¼ö²úÆ·ÁĞ±í×ª³Émap
+		// å°†æ¨èäº§å“åˆ—è¡¨è½¬æˆmap
 		Map<Integer, Product> recommendProductMap = new LinkedHashMap<>();
 		for (Product product : productsRecommend) {
 			recommendProductMap.put(product.getProductId(), product);
 		}
 		System.out.println(JSON.toJSONString(recommendProductMap));
 
-		// ¶ÔÍÆ¼ö²úÆ·ÁĞ±í°´idÅÅĞò
+		// å¯¹æ¨èäº§å“åˆ—è¡¨æŒ‰idæ’åº
 		Map<Integer, Product> recommendProductMapResort = new LinkedHashMap<>();
 		for (int i : ids) {
 			if (null != recommendProductMap.get(i)) {
@@ -63,12 +63,12 @@ public class Test {
 		}
 		System.out.println(JSON.toJSONString(recommendProductMapResort));
 
-		// ½«Ô­Ê¼²úÆ·ÄãÁĞ±í×·¼Óµ½ÍÆ¼öºóÃæ
+		// å°†åŸå§‹äº§å“ä½ åˆ—è¡¨è¿½åŠ åˆ°æ¨èåé¢
 		recommendProductMapResort.putAll(originalProductMap);
 
 		System.out.println(JSON.toJSONString(recommendProductMapResort));
 
-		// ½«mapÖØĞÂ×ª»Ølist
+		// å°†mapé‡æ–°è½¬å›list
 		List<Product> finalProducts = new ArrayList<Product>(recommendProductMapResort.values());
 		System.out.println(JSON.toJSONString(finalProducts));
 	}

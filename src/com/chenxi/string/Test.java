@@ -6,12 +6,12 @@ public class Test {
 
 	public static void main(String[] args) {
 		/**
-		 * Àà php explodeº¯Êı
+		 * ç±» php explodeå‡½æ•°
 		 */
-		String message = "ÎÒ  18";
-		System.out.println(JSON.toJSONString(message.split(" |£¬|,")));//["ÎÒ","","18"]
-		//¿ÉÒÔ´¦Àí¶à¸ö¿Õ¸ñµÄÇé¿ö
-		System.out.println(JSON.toJSONString(message.split("[ ]+|£¬|,")));//["ÎÒ","18"]
+		String message = "æˆ‘  18";
+		System.out.println(JSON.toJSONString(message.split(" |ï¼Œ|,")));//["æˆ‘","","18"]
+		//å¯ä»¥å¤„ç†å¤šä¸ªç©ºæ ¼çš„æƒ…å†µ
+		System.out.println(JSON.toJSONString(message.split("[ ]+|ï¼Œ|,")));//["æˆ‘","18"]
 	}
 
 }
