@@ -1,4 +1,4 @@
-package com.chenxi.ArrayList;
+package com.chenxi.test.ArrayList;
 
 import java.util.ArrayList;
 

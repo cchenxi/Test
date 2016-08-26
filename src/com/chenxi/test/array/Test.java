@@ -1,4 +1,4 @@
-package com.chenxi.array;
+package com.chenxi.test.array;
 
 
 import java.util.Arrays;

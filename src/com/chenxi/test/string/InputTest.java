@@ -1,4 +1,4 @@
-package com.chenxi.string;
+package com.chenxi.test.string;
 
 import java.util.Scanner;
 

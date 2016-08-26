@@ -1,4 +1,4 @@
-package com.chenxi.string;
+package com.chenxi.test.string;
 
 /**
  * 格式化输出

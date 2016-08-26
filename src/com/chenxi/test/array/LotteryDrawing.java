@@ -1,6 +1,4 @@
-package com.chenxi.array;
-
-import com.sun.org.apache.xpath.internal.SourceTree;
+package com.chenxi.test.array;
 
 import java.util.Arrays;
 import java.util.Scanner;
