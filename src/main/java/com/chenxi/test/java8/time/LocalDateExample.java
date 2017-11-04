@@ -1,10 +1,14 @@
 package com.chenxi.test.java8.time;
 
+import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.time.zone.ZoneRulesException;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2016/12/24.
@@ -39,6 +43,18 @@ public class LocalDateExample {
             System.out.println("today except date = " + todayExcept);
         } catch (ZoneRulesException e) {
             System.out.println(e.getMessage());
+        }
+
+        String date = "2017-09";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+        try {
+            Date date1 = sdf.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date1);
+            System.out.println(calendar.get(Calendar.MONTH) + 1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
