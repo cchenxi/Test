@@ -2,7 +2,11 @@ package com.chenxi.test.java8.stream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 流测试代码
@@ -11,7 +15,7 @@ import java.util.stream.Collectors;
  * @author chenxi
  */
 public class StreamTest {
-    private static List<Dish> MENU = Arrays.asList(
+    public static List<Dish> MENU = Arrays.asList(
             new Dish("pork", false, 800, Dish.Type.MEAT),
             new Dish("beef", false, 700, Dish.Type.MEAT),
             new Dish("chicken", false, 400, Dish.Type.MEAT),
@@ -43,5 +47,35 @@ public class StreamTest {
                 .limit(4)
                 .skip(1)
                 .forEach(System.out::println);
+
+        //数值流
+        int calories = MENU.stream().map(Dish::getCalories)
+                .reduce(0, Integer::sum);
+        System.out.println(calories);
+
+        int calories2 = MENU.stream().mapToInt(Dish::getCalories).sum();
+        System.out.println(calories);
+
+        OptionalInt caloriesMin = MENU.stream().mapToInt(Dish::getCalories).min();
+        System.out.println(caloriesMin.orElse(1));
+
+        OptionalInt caloriesMax = MENU.stream().mapToInt(Dish::getCalories).max();
+        System.out.println(caloriesMax.orElse(2));
+
+        IntStream intStream = MENU.stream().mapToInt(Dish::getCalories);
+        Stream<Integer> stream = intStream.boxed();
+
+        //数值范围
+        System.out.println(IntStream.range(1, 100).filter(n -> n % 2 == 0).count());
+        System.out.println(IntStream.rangeClosed(1, 100).filter(n -> n % 2 == 0).count());
+
+        Stream<int[]> pythagoreanTriples =
+                IntStream.rangeClosed(1, 100).boxed()
+                        .flatMap(a ->
+                                IntStream.rangeClosed(a, 100)
+                                        .filter(b -> Math.sqrt(a * a + b * b) % 1 == 0)
+                                        .mapToObj(b ->
+                                                new int[]{a, b, (int) Math.sqrt(a * a + b * b)})
+                        );
     }
 }
