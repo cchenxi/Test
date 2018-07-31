@@ -1,15 +1,15 @@
 package com.chenxi.test.activemq;
 
-public class TestConsumer {
+public class TestQueueConsumer {
     public static void main(String[] args) {
         Consumer consumer = new Consumer();
         consumer.init();
 
-        TestConsumer testConsumer = new TestConsumer();
-        new Thread(testConsumer.new ConsumerMq(consumer)).start();
-        new Thread(testConsumer.new ConsumerMq(consumer)).start();
-        new Thread(testConsumer.new ConsumerMq(consumer)).start();
-        new Thread(testConsumer.new ConsumerMq(consumer)).start();
+        TestQueueConsumer testQueueConsumer = new TestQueueConsumer();
+        new Thread(testQueueConsumer.new ConsumerMq(consumer)).start();
+        new Thread(testQueueConsumer.new ConsumerMq(consumer)).start();
+        new Thread(testQueueConsumer.new ConsumerMq(consumer)).start();
+        new Thread(testQueueConsumer.new ConsumerMq(consumer)).start();
     }
 
     private class ConsumerMq implements Runnable {

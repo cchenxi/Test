@@ -1,24 +1,30 @@
 package com.chenxi.test.activemq;
 
-public class TestMq {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class TestTopicMq {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestTopicMq.class);
     public static void main(String[] args) {
         Producer producer = new Producer();
         producer.init();
-        TestMq testMq = new TestMq();
+        TestTopicMq testTopicMq = new TestTopicMq();
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.warn("exception", e);
         }
-        new Thread(testMq.new ProducerMq(producer)).start();
-        new Thread(testMq.new ProducerMq(producer)).start();
-        new Thread(testMq.new ProducerMq(producer)).start();
-        new Thread(testMq.new ProducerMq(producer)).start();
-        new Thread(testMq.new ProducerMq(producer)).start();
+
+        new Thread(testTopicMq.new ProducerMq(producer)).start();
+        new Thread(testTopicMq.new ProducerMq(producer)).start();
+        new Thread(testTopicMq.new ProducerMq(producer)).start();
+        new Thread(testTopicMq.new ProducerMq(producer)).start();
     }
 
     private class ProducerMq implements Runnable {
         Producer producer;
+
         public ProducerMq(Producer producer) {
             this.producer = producer;
         }
@@ -27,10 +33,10 @@ public class TestMq {
         public void run() {
             while (true) {
                 try {
-                    producer.sendMessage("chenxi-MQ");
+                    producer.pubicMessage("chenxi-topic-MQ");
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    LOGGER.warn("exception", e);
                 }
             }
         }
