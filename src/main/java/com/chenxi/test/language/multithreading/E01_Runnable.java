@@ -1,5 +1,8 @@
 package com.chenxi.test.language.multithreading;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -30,10 +33,21 @@ class Printer implements Runnable {
     }
 }
 
+class A implements Callable<String> {
+    @Override
+    public String call() throws Exception {
+        return "haha";
+    }
+}
+
 public class E01_Runnable {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         for (int i = 0; i < 5; i++) {
             new Thread(new Printer()).start();
         }
+
+        FutureTask<String> futureTask = new FutureTask<>(new A());
+        new Thread(futureTask).start();
+        System.out.println(futureTask.get());
     }
 }

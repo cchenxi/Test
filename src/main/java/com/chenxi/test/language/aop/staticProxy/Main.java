@@ -1,4 +1,4 @@
-package com.chenxi.test.prepare.aop.staticProxy;
+package com.chenxi.test.language.aop.staticProxy;
 
 public class Main {
 

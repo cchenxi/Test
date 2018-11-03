@@ -71,6 +71,9 @@ public class Test {
 		// 将map重新转回list
 		List<Product> finalProducts = new ArrayList<Product>(recommendProductMapResort.values());
 		System.out.println(JSON.toJSONString(finalProducts));
+
+		System.out.println(1<<4);
+		System.out.println(1<<30);
 	}
 }
 

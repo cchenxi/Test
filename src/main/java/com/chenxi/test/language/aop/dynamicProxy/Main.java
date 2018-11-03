@@ -1,4 +1,4 @@
-package com.chenxi.test.prepare.aop.dynamicProxy;
+package com.chenxi.test.language.aop.dynamicProxy;
 
 public class Main {
     public static void main(String[] args) {
