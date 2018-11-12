@@ -8,7 +8,13 @@ public class ClassicProducerConsumerExample {
         Buffer buffer = new Buffer(2);
         Thread producerThread = new Thread(() -> {
            try {
-               buffer.produce();
+                int value = 0;
+                while (true) {
+                    buffer.add(value);
+                    System.out.println("produced " + value);
+                    value++;
+                    Thread.sleep(1000);
+                }
            } catch (InterruptedException e) {
                e.printStackTrace();
            }
@@ -16,7 +22,11 @@ public class ClassicProducerConsumerExample {
 
         Thread consumerThread = new Thread(() -> {
             try {
-                buffer.consume();
+                while (true) {
+                    int value = buffer.poll();
+                    System.out.println("consume " + value);
+                    Thread.sleep(1000);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -37,34 +47,25 @@ public class ClassicProducerConsumerExample {
             this.size = size;
         }
 
-        public void produce() throws InterruptedException {
-            int value = 0;
-            while (true) {
-                synchronized (this) {
-                    while (list.size() >= size) {
-                        wait();
-                    }
-                    list.add(value);
-                    System.out.println("produced " + value);
-                    value++;
-                    notify();
-                    Thread.sleep(1000);
+        public void add(int value) throws InterruptedException {
+            synchronized (this) {
+                while (list.size() >= size) {
+                    wait();
                 }
+                list.add(value);
+                notify();
             }
         }
 
-        public void consume() throws InterruptedException {
-            while (true) {
-                synchronized (this) {
-                    while (list.size() == 0) {
-                        wait();
-                    }
-
-                    int value = list.poll();
-                    System.out.println("consume " + value);
-                    notify();
-                    Thread.sleep(1000);
+        public int poll() throws InterruptedException {
+            synchronized (this) {
+                while (list.size() == 0) {
+                    wait();
                 }
+
+                int value = list.poll();
+                notify();
+                return value;
             }
         }
     }
