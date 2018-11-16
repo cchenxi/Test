@@ -1,8 +1,5 @@
 package com.chenxi.test.prepare.interview;
 
-
-import org.springframework.util.StringUtils;
-
 import redis.clients.jedis.Jedis;
 
 //1. 登录接口, 同一个人十分钟内连续登录5次失败,需要等待30分钟才能尝试登录。

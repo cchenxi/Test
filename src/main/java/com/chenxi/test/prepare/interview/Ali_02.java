@@ -31,8 +31,9 @@ public class Ali_02 {
                 int value = 0;
                 while (true) {
                     blockingQueue.put(value);
-                    System.out.println("produced " + value);
+                    System.out.println("produced " + value + " thread:" + Thread.currentThread().getId());
                     value++;
+                    Thread.sleep(100);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -43,13 +44,14 @@ public class Ali_02 {
         Runnable consumerTask = () -> {
             try {
                 while (true) {
-                    System.out.println("consume:" + blockingQueue.take());
+                    System.out.println("consume:" + blockingQueue.take() + " thread:" + Thread.currentThread().getId());
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         };
 
+        produceExecutor.execute(producerTask);
         produceExecutor.execute(producerTask);
 
         consumeExecutor.execute(consumerTask);
