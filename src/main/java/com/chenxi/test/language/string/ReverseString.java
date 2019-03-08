@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @see {https://javahungry.blogspot.com/2014/12/5-ways-to-reverse-string-in-java-with-example.html}
+ * @link {https://javahungry.blogspot.com/2014/12/5-ways-to-reverse-string-in-java-with-example.html}
  */
 public class ReverseString {
 
