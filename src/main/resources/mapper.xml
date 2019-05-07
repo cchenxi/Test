@@ -17,6 +17,13 @@
         select * from user where id = #{id}
     </select>
 
+    <select id="selectUser3" resultMap="UserResult">
+        SELECT *
+        FROM user
+        WHERE id = #{id, javaType=int, jdbcType=NUMERIC}
+        order by ${id} desc
+    </select>
+
     <insert id="insertUser" parameterType="User">
         INSERT INTO user (id, name, pwd)
         VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR})

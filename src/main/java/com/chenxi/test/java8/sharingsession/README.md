@@ -12,3 +12,9 @@ map,flatMap
 > 
 
 allMatch,anyMatch,noneMatch,findFirst,findAny
+
+* 归约（把流归约成一个值）
+
+* 收集
+
+* 排序
