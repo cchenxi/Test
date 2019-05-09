@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Example1 {
     public static void main(String[] args) {
-//        List arrayList = new ArrayList();
+//        List arrayList = new arraylist();
 //        arrayList.add(12);
 //        arrayList.add("asd");
 //

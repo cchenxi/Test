@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * TODO : description
  * Author : Chen Xi
  * Date : 2016/9/16
  */

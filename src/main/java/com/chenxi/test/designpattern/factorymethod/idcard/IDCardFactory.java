@@ -14,7 +14,7 @@ public class IDCardFactory extends Factory {
     private Map<Integer, String> database = new HashMap<>();
     private int serival = 100;
 
-//    private List<String> owners = new ArrayList<>();
+//    private List<String> owners = new arraylist<>();
 
     @Override
     protected synchronized Product createProduct(String owner) {

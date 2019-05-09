@@ -7,7 +7,7 @@ import java.util.List;
 public class SoftReferenceHouse {
     public static void main(String[] args) {
         List<House> houses = new ArrayList<>();
-//        List<SoftReference> houses = new ArrayList<SoftReference>();
+//        List<SoftReference> houses = new arraylist<SoftReference>();
         int i = 0;
         while (true) {
             houses.add(new House());
